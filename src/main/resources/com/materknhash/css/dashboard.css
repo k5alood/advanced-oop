@@ -1,0 +1,105 @@
+.root {
+    -fx-background-color: rgb(248, 250, 252);
+}
+
+.sidebar {
+    -fx-background-color: rgb(15, 23, 42);
+}
+
+.logo-container {
+    -fx-alignment: center;
+    -fx-padding: 20;
+}
+
+.nav-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: rgb(148, 163, 184);
+    -fx-alignment: center-left;
+    -fx-padding: 12 20;
+    -fx-font-size: 14px;
+}
+
+.nav-btn:hover {
+    -fx-background-color: rgb(30, 41, 59);
+    -fx-text-fill: white;
+}
+
+.nav-btn-active {
+    -fx-background-color: rgb(30, 58, 138);
+    -fx-text-fill: white;
+    -fx-background-radius: 8;
+}
+
+.header {
+    -fx-background-color: transparent;
+    -fx-padding: 20 40;
+}
+
+.page-title {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: rgb(15, 23, 42);
+}
+
+.user-profile {
+    -fx-alignment: center-right;
+    -fx-spacing: 15;
+}
+
+.avatar {
+    -fx-fill: rgb(226, 232, 240);
+    -fx-stroke: rgb(203, 213, 225);
+}
+
+.stat-card-blue { -fx-background-color: rgb(239, 246, 255); -fx-background-radius: 15; -fx-padding: 20; }
+.stat-card-green { -fx-background-color: rgb(240, 253, 244); -fx-background-radius: 15; -fx-padding: 20; }
+.stat-card-yellow { -fx-background-color: rgb(255, 251, 235); -fx-background-radius: 15; -fx-padding: 20; }
+.stat-card-red { -fx-background-color: rgb(254, 242, 242); -fx-background-radius: 15; -fx-padding: 20; }
+
+.activity-card {
+    -fx-background-color: white;
+    -fx-background-radius: 15;
+    -fx-padding: 25;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 15, 0, 0, 5);
+}
+
+.activity-item {
+    -fx-padding: 10 0;
+    -fx-border-color: rgb(241, 245, 249);
+    -fx-border-width: 0 0 1 0;
+}
+
+/* Modern Table Styling */
+.table-view {
+    -fx-background-color: transparent;
+    -fx-base: transparent;
+    -fx-control-inner-background: transparent;
+    -fx-table-cell-border-color: rgb(241, 245, 249);
+    -fx-table-header-border-color: transparent;
+    -fx-padding: 5;
+}
+
+.table-view .column-header {
+    -fx-background-color: rgb(248, 250, 252);
+    -fx-border-color: rgb(241, 245, 249);
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 10;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: rgb(100, 116, 139);
+    -fx-font-weight: bold;
+}
+
+.table-view .table-cell {
+    -fx-padding: 10;
+    -fx-text-fill: rgb(15, 23, 42);
+    -fx-alignment: center-left;
+}
+
+.table-view .table-row-cell:hover {
+    -fx-background-color: rgb(241, 245, 249);
+}
+
+.action-btn-edit { -fx-background-color: rgb(239, 246, 255); -fx-text-fill: rgb(30, 58, 138); -fx-cursor: hand; }
+.action-btn-delete { -fx-background-color: rgb(254, 242, 242); -fx-text-fill: rgb(153, 27, 27); -fx-cursor: hand; }

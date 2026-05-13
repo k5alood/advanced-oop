@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Text?>
+
+<HBox xmlns:fx="http://javafx.com/fxml" 
+      fx:controller="com.materknhash.controller.SupplierController"
+      spacing="30" style="-fx-background-color: #f8fafc;"
+      stylesheets="@../css/style.css">
+    
+    <padding>
+        <Insets top="30" right="40" bottom="30" left="40"/>
+    </padding>
+
+    <!-- FORM SIDE (Left) -->
+    <VBox prefWidth="350" spacing="20" styleClass="chart-container">
+        <padding>
+            <Insets top="25" right="25" bottom="25" left="25"/>
+        </padding>
+        
+        <Text text="Supplier Details" styleClass="chart-title"/>
+        
+        <VBox spacing="15">
+            <VBox spacing="5">
+                <Label text="Company Name" style="-fx-font-weight: bold;"/>
+                <TextField fx:id="nameField" promptText="e.g. Bosch Auto Parts"/>
+            </VBox>
+            <VBox spacing="5">
+                <Label text="Contact Person" style="-fx-font-weight: bold;"/>
+                <TextField fx:id="contactField" promptText="e.g. John Doe"/>
+            </VBox>
+            <VBox spacing="5">
+                <Label text="Phone Number" style="-fx-font-weight: bold;"/>
+                <TextField fx:id="phoneField" promptText="+20 123..."/>
+            </VBox>
+            <VBox spacing="5">
+                <Label text="Email Address" style="-fx-font-weight: bold;"/>
+                <TextField fx:id="emailField" promptText="supplier@example.com"/>
+            </VBox>
+            <VBox spacing="5">
+                <Label text="Full Address" style="-fx-font-weight: bold;"/>
+                <TextArea fx:id="addressField" promptText="Enter vendor address..." prefHeight="100"/>
+            </VBox>
+        </VBox>
+        
+        <HBox spacing="10">
+            <Button text="Save Supplier" styleClass="login-button" maxWidth="Infinity" HBox.hgrow="ALWAYS" onAction="#handleSave"/>
+            <Button text="Clear" styleClass="icon-button" prefWidth="80" onAction="#handleClear"/>
+        </HBox>
+    </VBox>
+
+    <!-- TABLE SIDE (Right) -->
+    <VBox HBox.hgrow="ALWAYS" spacing="20">
+        <HBox alignment="CENTER_LEFT">
+            <VBox>
+                <Text text="All Suppliers" styleClass="page-title"/>
+                <Text text="Manage your vendor network" styleClass="page-subtitle"/>
+            </VBox>
+            <Region HBox.hgrow="ALWAYS" />
+            <TextField fx:id="searchField" promptText="Search vendors..." prefWidth="250" styleClass="search-field"/>
+        </HBox>
+        
+        <VBox VBox.vgrow="ALWAYS" styleClass="chart-container">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <TableView fx:id="supplierTable" VBox.vgrow="ALWAYS" styleClass="modern-table">
+                <columns>
+                    <TableColumn fx:id="colId" text="ID" prefWidth="50" />
+                    <TableColumn fx:id="colName" text="Company Name" prefWidth="180" />
+                    <TableColumn fx:id="colContact" text="Contact" prefWidth="120" />
+                    <TableColumn fx:id="colPhone" text="Phone" prefWidth="120" />
+                    <TableColumn fx:id="colEmail" text="Email" prefWidth="150" />
+                    <TableColumn fx:id="colActions" text="Actions" prefWidth="100" />
+                </columns>
+            </TableView>
+        </VBox>
+        
+        <HBox alignment="CENTER_RIGHT" spacing="10">
+            <Button text="Export to CSV" styleClass="icon-button"/>
+            <Button text="Export to PDF" styleClass="icon-button"/>
+        </HBox>
+    </VBox>
+    
+</HBox>

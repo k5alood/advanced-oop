@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Text?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml" 
+           fx:controller="com.materknhash.controller.LoginController"
+           prefHeight="600.0" prefWidth="900.0" 
+           styleClass="login-root" 
+           stylesheets="@../css/style.css">
+    
+    <AnchorPane styleClass="login-overlay">
+        <VBox alignment="CENTER" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" 
+              AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
+            
+            <VBox styleClass="login-card" alignment="CENTER" maxWidth="400" spacing="20">
+                <!-- Logo Area -->
+                <VBox alignment="CENTER" spacing="10">
+                    <!-- Placeholder for Logo Image -->
+                    <ImageView fx:id="logoView" fitHeight="80" fitWidth="80" preserveRatio="true">
+                        <!-- We can set image in controller or here if available -->
+                    </ImageView>
+                    <Text text="Materknhash" styleClass="heading"/>
+                    <Text text="Auto Parts ERP System" styleClass="sub-heading"/>
+                </VBox>
+                
+                <!-- Form Area -->
+                <VBox spacing="15" alignment="CENTER_LEFT">
+                    <Label text="Username" style="-fx-text-fill: #1e293b; -fx-font-weight: bold;"/>
+                    <TextField fx:id="usernameField" promptText="Enter your username" prefHeight="45"/>
+                    
+                    <Label text="Password" style="-fx-text-fill: #1e293b; -fx-font-weight: bold;"/>
+                    <PasswordField fx:id="passwordField" promptText="Enter your password" prefHeight="45"/>
+                    
+                    <Label text="User Role" style="-fx-text-fill: #1e293b; -fx-font-weight: bold;"/>
+                    <ComboBox fx:id="roleComboBox" promptText="Select Role" prefWidth="400" prefHeight="45"/>
+                </VBox>
+                
+                <Label fx:id="errorLabel" styleClass="error-label" visible="false"/>
+                
+                <Button text="Login to System" onAction="#handleLogin" 
+                        styleClass="login-button" prefWidth="400" prefHeight="50"/>
+                
+                <Text text="© 2026 Materknhash ERP. All rights reserved." 
+                      style="-fx-fill: #94a3b8; -fx-font-size: 10px;"/>
+            </VBox>
+        </VBox>
+    </AnchorPane>
+</StackPane>

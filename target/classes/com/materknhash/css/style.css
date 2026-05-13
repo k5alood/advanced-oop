@@ -1,0 +1,231 @@
+/* 
+    Materknhash ERP - Modern UI Styling
+    Design Theme: Dark Navy & Clean White
+*/
+
+/* Variables */
+.root {
+    -fx-primary-color: #1e293b;
+    -fx-secondary-color: #3b82f6;
+    -fx-bg-light: #f8fafc;
+    -fx-text-dark: #0f172a;
+    -fx-text-light: #ffffff;
+    -fx-error-red: #ef4444;
+}
+
+/* Background Overlay */
+.login-root {
+    -fx-background-image: url("../images/login_bg.png");
+    -fx-background-size: cover;
+    -fx-background-position: center;
+}
+
+.login-overlay {
+    -fx-background-color: rgba(15, 23, 42, 0.7);
+}
+
+/* Login Card */
+.login-card {
+    -fx-background-color: white;
+    -fx-background-radius: 15;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 20, 0, 0, 10);
+    -fx-padding: 40;
+}
+
+/* Typography */
+.heading {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-primary-color;
+}
+
+.sub-heading {
+    -fx-font-size: 14px;
+    -fx-text-fill: #64748b;
+}
+
+/* Inputs */
+.text-input {
+    -fx-background-color: #f1f5f9;
+    -fx-background-radius: 8;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 8;
+    -fx-padding: 10;
+    -fx-font-size: 14px;
+}
+
+.text-input:focused {
+    -fx-border-color: -fx-secondary-color;
+    -fx-background-color: white;
+}
+
+/* Role Selector */
+.combo-box {
+    -fx-background-color: #f1f5f9;
+    -fx-background-radius: 8;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 8;
+}
+
+/* Button */
+.login-button {
+    -fx-background-color: -fx-secondary-color;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-padding: 12 30;
+    -fx-cursor: hand;
+}
+
+.login-button:hover {
+    -fx-background-color: #2563eb;
+}
+
+/* Error Labels */
+.error-label {
+    -fx-text-fill: -fx-error-red;
+    -fx-font-size: 12px;
+}
+
+/* Sidebar */
+.sidebar {
+    -fx-background-color: -fx-primary-color;
+}
+
+.sidebar-logo {
+    -fx-fill: white;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+.menu-item, .menu-item-active, .menu-item-logout {
+    -fx-background-color: transparent;
+    -fx-text-fill: #94a3b8;
+    -fx-alignment: center-left;
+    -fx-padding: 12 15;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+}
+
+.menu-item-active {
+    -fx-background-color: -fx-secondary-color;
+    -fx-text-fill: white;
+    -fx-background-radius: 8;
+}
+
+.menu-item:hover {
+    -fx-background-color: rgba(255,255,255,0.05);
+    -fx-text-fill: white;
+    -fx-background-radius: 8;
+}
+
+.menu-item-logout:hover {
+    -fx-background-color: -fx-error-red;
+    -fx-text-fill: white;
+    -fx-background-radius: 8;
+}
+
+/* Dashboard Content */
+.page-title {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-fill: -fx-primary-color;
+}
+
+.page-subtitle {
+    -fx-font-size: 14px;
+    -fx-fill: #64748b;
+}
+
+/* Stat Cards */
+.stat-card {
+    -fx-background-color: white;
+    -fx-background-radius: 12;
+    -fx-padding: 20;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 10, 0, 0, 5);
+}
+
+.card-label { -fx-font-size: 13px; -fx-fill: #64748b; }
+.card-value { -fx-font-size: 24px; -fx-font-weight: bold; -fx-fill: -fx-primary-color; }
+.card-value-profit { -fx-font-size: 24px; -fx-font-weight: bold; -fx-fill: #10b981; }
+.card-trend-up { -fx-font-size: 11px; -fx-fill: #10b981; }
+.card-trend-neutral { -fx-font-size: 11px; -fx-fill: #64748b; }
+.card-trend-down { -fx-font-size: 11px; -fx-fill: -fx-error-red; }
+
+.card-alert { -fx-border-color: -fx-error-red; -fx-border-width: 0 0 0 4; }
+.card-label-alert { -fx-font-size: 13px; -fx-fill: -fx-error-red; }
+.card-value-alert { -fx-font-size: 24px; -fx-font-weight: bold; -fx-fill: -fx-error-red; }
+
+/* Charts */
+.chart-container {
+    -fx-background-color: white;
+    -fx-background-radius: 12;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 10, 0, 0, 5);
+}
+
+.chart-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-fill: -fx-primary-color;
+}
+
+.icon-button {
+    -fx-background-color: white;
+    -fx-background-radius: 8;
+    -fx-border-color: #e2e8f0;
+    -fx-cursor: hand;
+}
+
+/* Modern TableView */
+.modern-table {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.modern-table .column-header-background {
+    -fx-background-color: #f1f5f9;
+}
+
+.modern-table .column-header {
+    -fx-background-color: transparent;
+    -fx-padding: 10;
+}
+
+.modern-table .column-header .label {
+    -fx-text-fill: -fx-primary-color;
+    -fx-font-weight: bold;
+}
+
+.modern-table .table-row-cell {
+    -fx-background-color: white;
+    -fx-border-color: #f1f5f9;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 5;
+}
+
+.modern-table .table-row-cell:hover {
+    -fx-background-color: #f8fafc;
+}
+
+/* Action Buttons */
+.action-btn-edit {
+    -fx-background-color: #dcfce7;
+    -fx-text-fill: #166534;
+    -fx-background-radius: 4;
+    -fx-cursor: hand;
+}
+
+.action-btn-delete {
+    -fx-background-color: #fee2e2;
+    -fx-text-fill: #991b1b;
+    -fx-background-radius: 4;
+    -fx-cursor: hand;
+}
+
+.search-field {
+    -fx-background-color: white;
+    -fx-border-color: #e2e8f0;
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+}
