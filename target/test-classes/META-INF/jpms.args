@@ -1,0 +1,4 @@
+--patch-module
+com.materknhash=_
+--add-reads
+com.materknhash=ALL-UNNAMED

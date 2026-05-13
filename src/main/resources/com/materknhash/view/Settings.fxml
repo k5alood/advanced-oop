@@ -9,7 +9,7 @@
     <HBox styleClass="header" alignment="CENTER_LEFT">
         <Label text="System Settings" styleClass="page-title"/>
         <Region HBox.hgrow="ALWAYS"/>
-        <Button text="💾 Save Changes" styleClass="action-btn-primary" onAction="#handleSaveSettings"/>
+        <Button text="Save Changes" styleClass="action-btn-primary" onAction="#handleSaveSettings" style="-fx-background-color: #1e3a5f; -fx-text-fill: white;"/>
     </HBox>
 
     <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent;">
@@ -18,23 +18,29 @@
             
             <VBox styleClass="activity-card" spacing="15">
                 <Label text="Store Information" style="-fx-font-weight: bold; -fx-font-size: 16px;"/>
-                <GridPane hgap="20" vgap="15">
-                    <Label text="Store Name:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-                    <TextField fx:id="storeNameField" text="Materknhash Auto Parts" GridPane.rowIndex="0" GridPane.columnIndex="1" prefWidth="300"/>
-                    
-                    <Label text="Contact Email:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-                    <TextField fx:id="storeEmailField" text="contact@materknhash.com" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
-                    
-                    <Label text="Currency Symbol:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-                    <TextField fx:id="currencyField" text="EGP" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
-                </GridPane>
+                <VBox spacing="20">
+                    <VBox spacing="5">
+                        <Label text="Company Name" style="-fx-font-weight: bold; -fx-font-size: 13;"/>
+                        <TextField fx:id="storeNameField" text="Materknhash Auto Parts" prefWidth="400"/>
+                    </VBox>
+
+                    <VBox spacing="5">
+                        <Label text="Contact Email" style="-fx-font-weight: bold; -fx-font-size: 13;"/>
+                        <TextField fx:id="storeEmailField" text="contact@materknhash.com"/>
+                    </VBox>
+
+                    <VBox spacing="5">
+                        <Label text="Currency Symbol" style="-fx-font-weight: bold; -fx-font-size: 13;"/>
+                        <TextField fx:id="currencyField" text="EGP" prefWidth="100"/>
+                    </VBox>
+                </VBox>
             </VBox>
 
             <VBox styleClass="activity-card" spacing="15">
                 <Label text="Security &amp; Backup" style="-fx-font-weight: bold; -fx-font-size: 16px;"/>
                 <HBox spacing="20">
-                    <Button text="📦 Backup Database" styleClass="nav-btn" style="-fx-border-color: #cbd5e1;"/>
-                    <Button text="🔄 Restore Data" styleClass="nav-btn" style="-fx-border-color: #cbd5e1;"/>
+                    <Button text="Backup Database" styleClass="nav-btn" style="-fx-border-color: #cbd5e1; -fx-text-fill: #1e293b;"/>
+                    <Button text="Restore Data" styleClass="nav-btn" style="-fx-border-color: #cbd5e1; -fx-text-fill: #1e293b;"/>
                 </HBox>
             </VBox>
         </VBox>

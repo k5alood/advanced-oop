@@ -26,8 +26,8 @@
                 <VBox HBox.hgrow="ALWAYS" styleClass="activity-card">
                     <Label text="Monthly Growth" style="-fx-font-weight: bold;"/>
                     <BarChart fx:id="growthBarChart">
-                        <xAxis><CategoryAxis side="BOTTOM"/></xAxis>
-                        <yAxis><NumberAxis side="LEFT"/></yAxis>
+                        <xAxis><CategoryAxis fx:id="reportXAxis" side="BOTTOM" label="Month" /></xAxis>
+                        <yAxis><NumberAxis fx:id="reportYAxis" side="LEFT" label="Revenue (EGP)" /></yAxis>
                     </BarChart>
                 </VBox>
             </HBox>

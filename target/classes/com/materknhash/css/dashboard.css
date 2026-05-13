@@ -86,6 +86,10 @@
     -fx-padding: 10;
 }
 
+.table-view .column-header-background .filler {
+    -fx-background-color: rgb(248, 250, 252);
+}
+
 .table-view .column-header .label {
     -fx-text-fill: rgb(100, 116, 139);
     -fx-font-weight: bold;

@@ -46,8 +46,8 @@
         </VBox>
         
         <HBox spacing="10">
-            <Button text="Save Supplier" styleClass="login-button" maxWidth="Infinity" HBox.hgrow="ALWAYS" onAction="#handleSave"/>
             <Button text="Clear" styleClass="icon-button" prefWidth="80" onAction="#handleClear"/>
+            <Button text="Add Supplier" styleClass="login-button" maxWidth="Infinity" HBox.hgrow="ALWAYS" onAction="#handleSave" style="-fx-background-color: #1e3a5f; -fx-text-fill: white;"/>
         </HBox>
     </VBox>
 

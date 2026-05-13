@@ -9,10 +9,14 @@ import javafx.scene.control.TableView;
 public class ReportController {
     @FXML private PieChart revenuePieChart;
     @FXML private BarChart<String, Number> growthBarChart;
+    @FXML private javafx.scene.chart.CategoryAxis reportXAxis;
+    @FXML private javafx.scene.chart.NumberAxis reportYAxis;
     @FXML private TableView<?> topProductsTable;
 
     @FXML
     public void initialize() {
+        if (reportXAxis != null) reportXAxis.setLabel("Time Period");
+        if (reportYAxis != null) reportYAxis.setLabel("Revenue (EGP)");
         setupDummyData();
     }
 

@@ -48,9 +48,9 @@
             <HBox spacing="25">
                 <VBox HBox.hgrow="ALWAYS" prefHeight="450" styleClass="activity-card">
                     <Label text="Sales Performance" style="-fx-font-weight: bold; -fx-font-size: 16px;"/>
-                    <LineChart fx:id="salesChart" legendSide="TOP" animated="false" style="-fx-padding: 20 0 0 0;">
-                        <xAxis><CategoryAxis side="BOTTOM" label="Month" /></xAxis>
-                        <yAxis><NumberAxis side="LEFT" label="Revenue" /></yAxis>
+                    <LineChart fx:id="salesChart" legendSide="RIGHT" animated="false" style="-fx-padding: 20 0 0 0;">
+                        <xAxis><CategoryAxis fx:id="xAxis" side="BOTTOM" label="Month" /></xAxis>
+                        <yAxis><NumberAxis fx:id="yAxis" side="LEFT" label="Revenue (EGP)" /></yAxis>
                     </LineChart>
                 </VBox>
                 

@@ -6,6 +6,8 @@ import com.materknhash.util.SessionManager;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.chart.LineChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -42,8 +44,9 @@ public class DashboardController {
     private Label lowStockLabel;
     @FXML
     private TextField storeNameField, storeEmailField, currencyField;
-    @FXML
-    private LineChart<String, Number> salesChart;
+    @FXML private LineChart<String, Number> salesChart;
+    @FXML private CategoryAxis xAxis;
+    @FXML private NumberAxis yAxis;
     @FXML
     private VBox recentActivitiesList;
     @FXML
@@ -71,6 +74,11 @@ public class DashboardController {
         try {
             // Load Dashboard Home by default
             showDashboard();
+
+            // Set Chart Labels explicitly
+            if (xAxis != null) xAxis.setLabel("Month");
+            if (yAxis != null) yAxis.setLabel("Revenue (EGP)");
+            if (salesChart != null) salesChart.setTitle("Monthly Sales Performance");
 
             if (SessionManager.getInstance().isLoggedIn()) {
                 User user = SessionManager.getInstance().getCurrentUser();
