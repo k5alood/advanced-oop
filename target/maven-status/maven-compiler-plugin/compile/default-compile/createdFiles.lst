@@ -20,7 +20,9 @@ com\materknhash\network\InvoiceServer.class
 com\materknhash\model\Sale.class
 com\materknhash\network\InvoiceClient.class
 com\materknhash\model\SaleItem.class
+com\materknhash\scratch\AddTestUser.class
 com\materknhash\service\AuthService.class
+com\materknhash\controller\InventoryController$2.class
 com\materknhash\controller\SalesController.class
 com\materknhash\dao\BaseDAO.class
 com\materknhash\util\SessionManager.class

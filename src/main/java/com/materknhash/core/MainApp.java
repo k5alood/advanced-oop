@@ -12,15 +12,16 @@ public class MainApp extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            javafx.fxml.FXMLLoader loader = new javafx.fxml.FXMLLoader(getClass().getResource("/com/materknhash/view/Login.fxml"));
+            javafx.fxml.FXMLLoader loader = new javafx.fxml.FXMLLoader(
+                    getClass().getResource("/com/materknhash/view/Login.fxml"));
             javafx.scene.Parent root = loader.load();
-            
+
             javafx.scene.Scene scene = new javafx.scene.Scene(root);
             primaryStage.setTitle("Materknhash ERP - Login");
             primaryStage.setScene(scene);
             primaryStage.setResizable(false);
             primaryStage.show();
-            
+
             System.out.println("Materknhash ERP Login Screen Loaded.");
         } catch (Exception e) {
             e.printStackTrace();
@@ -29,6 +30,9 @@ public class MainApp extends Application {
     }
 
     public static void main(String[] args) {
+        // Start Socket Server for Invoices in background
+        new com.materknhash.network.InvoiceServer(5000).start();
+
         launch(args);
     }
 }

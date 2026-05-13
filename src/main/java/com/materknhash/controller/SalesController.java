@@ -27,7 +27,7 @@ public class SalesController {
     @FXML private TableColumn<SaleItem, String> colItem;
     @FXML private TableColumn<SaleItem, Double> colPrice, colTotal;
     @FXML private TableColumn<SaleItem, Integer> colQty;
-    @FXML private Text subtotalLabel, taxLabel, grandTotalLabel, invoiceDateLabel;
+    @FXML private Label subtotalLabel, taxLabel, grandTotalLabel, invoiceDateLabel;
 
     private final ProductDAO productDAO = new ProductDAO();
     private final SaleDAO saleDAO = new SaleDAO();
@@ -90,17 +90,20 @@ public class SalesController {
         double tax = subtotal * 0.14;
         double total = subtotal + tax;
 
-        subtotalLabel.setText(String.format("%.2f", subtotal));
-        taxLabel.setText(String.format("%.2f", tax));
-        grandTotalLabel.setText(String.format("$%.2f", total));
+        subtotalLabel.setText(String.format("%,.2f EGP", subtotal));
+        taxLabel.setText(String.format("%,.2f EGP", tax));
+        grandTotalLabel.setText(String.format("%,.2f EGP", total));
     }
 
     @FXML
     private void handleCompleteSale() {
         if (invoiceItems.isEmpty()) return;
 
+        double subtotal = invoiceItems.stream().mapToDouble(SaleItem::getTotalPrice).sum();
+        double total = subtotal * 1.14; // Including 14% Tax
+
         Sale sale = new Sale();
-        sale.setTotalAmount(Double.parseDouble(subtotalLabel.getText()) + Double.parseDouble(taxLabel.getText()));
+        sale.setTotalAmount(total);
         sale.setUserId(SessionManager.getInstance().getCurrentUser().getId());
         sale.setItems(new java.util.ArrayList<>(invoiceItems));
 

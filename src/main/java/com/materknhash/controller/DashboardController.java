@@ -9,6 +9,9 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.scene.paint.Color;
@@ -26,29 +29,45 @@ import java.util.concurrent.TimeUnit;
  */
 public class DashboardController {
 
-    @FXML private Label userNameLabel;
-    @FXML private Label totalSalesLabel;
-    @FXML private Label totalPartsLabel;
-    @FXML private Label lowStockLabel;
-    @FXML private Label totalProfitLabel;
-    @FXML private LineChart<String, Number> salesChart;
-    @FXML private VBox recentActivitiesList;
+    @FXML
+    private Label userNameLabel;
+    @FXML
+    private Label totalSalesLabel;
+    @FXML
+    private Label totalPartsLabel;
+    @FXML
+    private Label lowStockLabel;
+    @FXML
+    private Label totalProfitLabel;
+    @FXML
+    private LineChart<String, Number> salesChart;
+    @FXML
+    private VBox recentActivitiesList;
+    @FXML
+    private StackPane contentArea;
+    @FXML
+    private BorderPane mainBorderPane;
     
-    @FXML private Button reportsBtn;
-    @FXML private Button usersBtn;
+    private javafx.scene.Node dashboardHomeView;
+
+    @FXML
+    private Button reportsBtn;
+    @FXML
+    private Button usersBtn;
 
     private final DashboardDAO dashboardDAO = new DashboardDAO();
     private com.materknhash.thread.StockMonitorThread monitorThread;
 
     @FXML
     public void initialize() {
+        dashboardHomeView = contentArea.getChildren().get(0); // Save the initial dashboard view
         try {
             if (SessionManager.getInstance().isLoggedIn()) {
                 User user = SessionManager.getInstance().getCurrentUser();
                 if (userNameLabel != null && user != null) {
                     userNameLabel.setText(user.getUsername());
                 }
-                
+
                 // Role-Based Access Control (RBAC)
                 if (user != null && user.getRole() != User.UserRole.ADMIN) {
                     if (reportsBtn != null) {
@@ -87,7 +106,7 @@ public class DashboardController {
             totalSalesLabel.setText(String.format("%,.0f EGP", sales));
             totalPartsLabel.setText(String.valueOf(parts));
             lowStockLabel.setText(String.valueOf(lowStock));
-            totalProfitLabel.setText(String.format("%,.0f EGP", profit)); 
+            totalProfitLabel.setText(String.format("%,.0f EGP", profit));
 
             updateChart(chartData);
             updateRecentActivities();
@@ -95,9 +114,10 @@ public class DashboardController {
     }
 
     private void updateRecentActivities() {
-        if (recentActivitiesList == null) return;
+        if (recentActivitiesList == null)
+            return;
         recentActivitiesList.getChildren().clear();
-        
+
         List<String> activities = dashboardDAO.getRecentActivities();
         for (String activity : activities) {
             HBox item = new HBox(10);
@@ -106,27 +126,31 @@ public class DashboardController {
 
             // Create a colored icon circle based on activity type
             Circle icon = new Circle(15);
-            if (activity.contains("Sale")) icon.setFill(javafx.scene.paint.Color.rgb(34, 197, 94)); // Green
-            else if (activity.contains("Product")) icon.setFill(javafx.scene.paint.Color.rgb(59, 130, 246)); // Blue
-            else icon.setFill(javafx.scene.paint.Color.rgb(100, 116, 139)); // Gray
+            if (activity.contains("Sale"))
+                icon.setFill(javafx.scene.paint.Color.rgb(34, 197, 94)); // Green
+            else if (activity.contains("Product"))
+                icon.setFill(javafx.scene.paint.Color.rgb(59, 130, 246)); // Blue
+            else
+                icon.setFill(javafx.scene.paint.Color.rgb(100, 116, 139)); // Gray
 
             VBox textContainer = new VBox(2);
             Label msg = new Label(activity);
             msg.setStyle("-fx-font-weight: bold; -fx-font-size: 13px;");
-            
+
             Label time = new Label("Just now");
             time.setStyle("-fx-text-fill: gray; -fx-font-size: 11px;");
-            
+
             textContainer.getChildren().addAll(msg, time);
             item.getChildren().addAll(icon, textContainer);
-            
+
             recentActivitiesList.getChildren().add(item);
         }
     }
 
     private void updateChart(Map<String, Double> data) {
-        if (salesChart == null) return;
-        
+        if (salesChart == null)
+            return;
+
         salesChart.getData().clear();
         XYChart.Series<String, Number> series = new XYChart.Series<>();
         series.setName("Sales Revenue 2026");
@@ -152,14 +176,52 @@ public class DashboardController {
     }
 
     @FXML
+    private void showDashboard() {
+        contentArea.getChildren().setAll(dashboardHomeView);
+        refreshDashboardData();
+    }
+
+    @FXML
+    private void showInventory() { loadView("/com/materknhash/view/Inventory.fxml"); }
+
+    @FXML
+    private void showSales() { loadView("/com/materknhash/view/Sales.fxml"); }
+
+    @FXML
+    private void showPurchases() { loadView("/com/materknhash/view/Inventory.fxml"); } // Placeholder
+
+    @FXML
+    private void showSuppliers() { loadView("/com/materknhash/view/Supplier.fxml"); }
+
+    @FXML
+    private void showReports() { loadView("/com/materknhash/view/Reports.fxml"); }
+
+    @FXML
+    private void showUsers() { loadView("/com/materknhash/view/Dashboard.fxml"); } // Placeholder
+
+    @FXML
+    private void showSettings() { loadView("/com/materknhash/view/Dashboard.fxml"); } // Placeholder
+
+    private void loadView(String fxmlPath) {
+        try {
+            javafx.fxml.FXMLLoader loader = new javafx.fxml.FXMLLoader(getClass().getResource(fxmlPath));
+            contentArea.getChildren().setAll((javafx.scene.Node) loader.load());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
     private void handleLogout() {
-        if (monitorThread != null) monitorThread.stopMonitoring();
+        if (monitorThread != null)
+            monitorThread.stopMonitoring();
         System.out.println("Logging out...");
         // Logic to return to Login screen
     }
-    
+
     // Cleanup when controller is destroyed
     public void stop() {
-        if (monitorThread != null) monitorThread.stopMonitoring();
+        if (monitorThread != null)
+            monitorThread.stopMonitoring();
     }
 }

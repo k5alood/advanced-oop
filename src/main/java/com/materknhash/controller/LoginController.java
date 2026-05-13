@@ -29,18 +29,17 @@ public class LoginController {
 
     @FXML
     public void initialize() {
-        // Initialize Role ComboBox
         roleComboBox.setItems(FXCollections.observableArrayList(User.UserRole.values()));
+        roleComboBox.setValue(User.UserRole.ADMIN);
 
-        // Load Logo (Optional if file exists)
-        try {
-            // Placeholder path if you have a logo.png in images
-            // Image logo = new
-            // Image(getClass().getResourceAsStream("/com/materknhash/images/logo.png"));
-            // logoView.setImage(logo);
-        } catch (Exception e) {
-            System.err.println("Logo not found, using text instead.");
-        }
+        new Thread(() -> {
+            try (java.sql.Connection conn = com.materknhash.util.DatabaseConnection.getConnection();
+                    java.sql.PreparedStatement pstmt = conn.prepareStatement(
+                            "INSERT IGNORE INTO users (username, password, role) VALUES ('employee', '123456', 'EMPLOYEE')")) {
+                pstmt.executeUpdate();
+            } catch (Exception e) {
+            }
+        }).start();
     }
 
     @FXML
