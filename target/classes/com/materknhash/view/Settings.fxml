@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="0" xmlns:fx="http://javafx.com/fxml" 
+      stylesheets="@../css/dashboard.css">
+    
+    <HBox styleClass="header" alignment="CENTER_LEFT">
+        <Label text="System Settings" styleClass="page-title"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="💾 Save Changes" styleClass="action-btn-primary"/>
+    </HBox>
+
+    <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent;">
+        <VBox spacing="30">
+            <padding><Insets top="20" right="40" bottom="40" left="40"/></padding>
+            
+            <VBox styleClass="activity-card" spacing="15">
+                <Label text="Store Information" style="-fx-font-weight: bold; -fx-font-size: 16px;"/>
+                <GridPane hgap="20" vgap="15">
+                    <Label text="Store Name:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                    <TextField text="Materknhash Auto Parts" GridPane.rowIndex="0" GridPane.columnIndex="1" prefWidth="300"/>
+                    
+                    <Label text="Contact Email:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                    <TextField text="contact@materknhash.com" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                    
+                    <Label text="Currency Symbol:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                    <TextField text="EGP" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                </GridPane>
+            </VBox>
+
+            <VBox styleClass="activity-card" spacing="15">
+                <Label text="Security &amp; Backup" style="-fx-font-weight: bold; -fx-font-size: 16px;"/>
+                <HBox spacing="20">
+                    <Button text="📦 Backup Database" styleClass="nav-btn" style="-fx-border-color: #cbd5e1;"/>
+                    <Button text="🔄 Restore Data" styleClass="nav-btn" style="-fx-border-color: #cbd5e1;"/>
+                </HBox>
+            </VBox>
+        </VBox>
+    </ScrollPane>
+</VBox>

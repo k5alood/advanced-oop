@@ -61,13 +61,14 @@ public class DashboardController {
 
     @FXML
     public void initialize() {
-        if (!isFirstInit) return; // Safety check to prevent infinite loop
+        if (!isFirstInit)
+            return; // Safety check to prevent infinite loop
         isFirstInit = false;
 
         try {
             // Load Dashboard Home by default
             showDashboard();
-            
+
             if (SessionManager.getInstance().isLoggedIn()) {
                 User user = SessionManager.getInstance().getCurrentUser();
                 if (userNameLabel != null && user != null) {
@@ -219,7 +220,7 @@ public class DashboardController {
 
     @FXML
     private void showSettings() {
-        loadView("/com/materknhash/view/Dashboard.fxml"); // Still a placeholder but will be fixed
+        loadView("/com/materknhash/view/Settings.fxml");
     }
 
     private void loadView(String fxmlPath) {
