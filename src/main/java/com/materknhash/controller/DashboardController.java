@@ -9,6 +9,7 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -31,11 +32,16 @@ public class DashboardController {
 
     @FXML
     private Label userNameLabel;
-    @FXML private Label totalSalesLabel;
-    @FXML private Label totalProfitLabel;
-    @FXML private Label totalPartsLabel;
-    @FXML private Label lowStockLabel;
-    @FXML private TextField storeNameField, storeEmailField, currencyField;
+    @FXML
+    private Label totalSalesLabel;
+    @FXML
+    private Label totalProfitLabel;
+    @FXML
+    private Label totalPartsLabel;
+    @FXML
+    private Label lowStockLabel;
+    @FXML
+    private TextField storeNameField, storeEmailField, currencyField;
     @FXML
     private LineChart<String, Number> salesChart;
     @FXML
@@ -219,7 +225,8 @@ public class DashboardController {
     private void handleSaveSettings() {
         System.out.println("Saving Settings: " + storeNameField.getText());
         // In a real app, this would update a 'config' table in DB
-        javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.INFORMATION);
+        javafx.scene.control.Alert alert = new javafx.scene.control.Alert(
+                javafx.scene.control.Alert.AlertType.INFORMATION);
         alert.setTitle("Settings Saved");
         alert.setHeaderText(null);
         alert.setContentText("System settings have been updated successfully!");
