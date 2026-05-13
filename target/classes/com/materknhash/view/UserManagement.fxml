@@ -10,7 +10,7 @@
     <HBox styleClass="header" alignment="CENTER_LEFT">
         <Label text="User Management" styleClass="page-title"/>
         <Region HBox.hgrow="ALWAYS"/>
-        <Button text="+ Add New User" styleClass="action-btn-primary"/>
+        <Button text="+ Add New User" styleClass="action-btn-primary" onAction="#handleAddUser"/>
     </HBox>
 
     <VBox spacing="20" VBox.vgrow="ALWAYS">

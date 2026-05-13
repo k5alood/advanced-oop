@@ -31,14 +31,11 @@ public class DashboardController {
 
     @FXML
     private Label userNameLabel;
-    @FXML
-    private Label totalSalesLabel;
-    @FXML
-    private Label totalPartsLabel;
-    @FXML
-    private Label lowStockLabel;
-    @FXML
-    private Label totalProfitLabel;
+    @FXML private Label totalSalesLabel;
+    @FXML private Label totalProfitLabel;
+    @FXML private Label totalPartsLabel;
+    @FXML private Label lowStockLabel;
+    @FXML private TextField storeNameField, storeEmailField, currencyField;
     @FXML
     private LineChart<String, Number> salesChart;
     @FXML
@@ -219,21 +216,32 @@ public class DashboardController {
     }
 
     @FXML
-    private void showSettings() {
-        loadView("/com/materknhash/view/Settings.fxml");
+    private void handleSaveSettings() {
+        System.out.println("Saving Settings: " + storeNameField.getText());
+        // In a real app, this would update a 'config' table in DB
+        javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.INFORMATION);
+        alert.setTitle("Settings Saved");
+        alert.setHeaderText(null);
+        alert.setContentText("System settings have been updated successfully!");
+        alert.showAndWait();
     }
 
     private void loadView(String fxmlPath) {
         try {
             javafx.fxml.FXMLLoader loader = new javafx.fxml.FXMLLoader(getClass().getResource(fxmlPath));
             // If the FXML uses DashboardController, we want to use THIS instance
-            if (fxmlPath.contains("Home.fxml")) {
+            if (fxmlPath.contains("Home.fxml") || fxmlPath.contains("Settings.fxml")) {
                 loader.setController(this);
             }
             contentArea.getChildren().setAll((javafx.scene.Node) loader.load());
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private void showSettings() {
+        loadView("/com/materknhash/view/Settings.fxml");
     }
 
     @FXML

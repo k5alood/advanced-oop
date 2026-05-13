@@ -8,6 +8,7 @@ import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 
 import java.util.Optional;
@@ -121,8 +122,56 @@ public class InventoryController {
 
     @FXML
     private void showAddDialog() {
-        // In a real app, this would open a new FXML window or a Dialog
-        System.out.println("Opening Add New Part Dialog...");
+        Dialog<Product> dialog = new Dialog<>();
+        dialog.setTitle("Add New Spare Part");
+        dialog.setHeaderText("Enter details for the new spare part.");
+
+        ButtonType saveButtonType = new ButtonType("Save", ButtonBar.ButtonData.OK_DONE);
+        dialog.getDialogPane().getButtonTypes().addAll(saveButtonType, ButtonType.CANCEL);
+
+        GridPane grid = new GridPane();
+        grid.setHgap(10);
+        grid.setVgap(10);
+        grid.setPadding(new javafx.geometry.Insets(20, 150, 10, 10));
+
+        TextField name = new TextField();
+        TextField code = new TextField();
+        TextField category = new TextField();
+        TextField price = new TextField();
+        TextField qty = new TextField();
+
+        grid.add(new Label("Part Name:"), 0, 0);
+        grid.add(name, 1, 0);
+        grid.add(new Label("Part Number:"), 0, 1);
+        grid.add(code, 1, 1);
+        grid.add(new Label("Category:"), 0, 2);
+        grid.add(category, 1, 2);
+        grid.add(new Label("Price (EGP):"), 0, 3);
+        grid.add(price, 1, 3);
+        grid.add(new Label("Initial Quantity:"), 0, 4);
+        grid.add(qty, 1, 4);
+
+        dialog.getDialogPane().setContent(grid);
+
+        dialog.setResultConverter(dialogButton -> {
+            if (dialogButton == saveButtonType) {
+                Product p = new Product();
+                p.setName(name.getText());
+                p.setPartNumber(code.getText());
+                p.setCategory(category.getText());
+                p.setPrice(Double.parseDouble(price.getText()));
+                p.setQuantity(Integer.parseInt(qty.getText()));
+                p.setMinStockLevel(5); // Default
+                return p;
+            }
+            return null;
+        });
+
+        dialog.showAndWait().ifPresent(product -> {
+            if (productDAO.add(product)) {
+                loadData();
+            }
+        });
     }
 
     private void handleEdit(Product product) {
