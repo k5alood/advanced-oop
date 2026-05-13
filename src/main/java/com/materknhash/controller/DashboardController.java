@@ -49,6 +49,7 @@ public class DashboardController {
     private BorderPane mainBorderPane;
 
     private javafx.scene.Node dashboardHomeView;
+    private boolean isFirstInit = true;
 
     @FXML
     private Button reportsBtn;
@@ -60,6 +61,9 @@ public class DashboardController {
 
     @FXML
     public void initialize() {
+        if (!isFirstInit) return; // Safety check to prevent infinite loop
+        isFirstInit = false;
+
         try {
             // Load Dashboard Home by default
             showDashboard();

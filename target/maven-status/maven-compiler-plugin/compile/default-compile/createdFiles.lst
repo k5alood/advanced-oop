@@ -1,5 +1,6 @@
 com\materknhash\controller\InventoryController.class
 com\materknhash\dao\SupplierDAO.class
+com\materknhash\controller\UserController.class
 com\materknhash\util\DatabaseConnection.class
 com\materknhash\thread\StockAlertListener.class
 com\materknhash\util\PasswordUtil.class

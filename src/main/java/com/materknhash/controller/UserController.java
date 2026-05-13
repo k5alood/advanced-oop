@@ -9,11 +9,16 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class UserController {
-    @FXML private TableView<User> userTable;
-    @FXML private TableColumn<User, Integer> colId;
-    @FXML private TableColumn<User, String> colUsername;
-    @FXML private TableColumn<User, User.UserRole> colRole;
-    @FXML private ComboBox<User.UserRole> roleFilter;
+    @FXML
+    private TableView<User> userTable;
+    @FXML
+    private TableColumn<User, Integer> colId;
+    @FXML
+    private TableColumn<User, String> colUsername;
+    @FXML
+    private TableColumn<User, User.UserRole> colRole;
+    @FXML
+    private ComboBox<User.UserRole> roleFilter;
 
     private final UserDAO userDAO = new UserDAO();
     private final ObservableList<User> userList = FXCollections.observableArrayList();
