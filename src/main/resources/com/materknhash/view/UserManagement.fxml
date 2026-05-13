@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="0" xmlns:fx="http://javafx.com/fxml" 
+      fx:controller="com.materknhash.controller.UserController"
+      stylesheets="@../css/dashboard.css">
+    
+    <HBox styleClass="header" alignment="CENTER_LEFT">
+        <Label text="User Management" styleClass="page-title"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="+ Add New User" styleClass="action-btn-primary"/>
+    </HBox>
+
+    <VBox spacing="20" VBox.vgrow="ALWAYS">
+        <padding><Insets top="20" right="40" bottom="40" left="40"/></padding>
+        
+        <HBox spacing="15" alignment="CENTER_LEFT" styleClass="activity-card">
+            <TextField promptText="Search users..." HBox.hgrow="ALWAYS" styleClass="search-field"/>
+            <ComboBox promptText="Filter by Role" fx:id="roleFilter" styleClass="combo-box-modern"/>
+        </HBox>
+
+        <TableView fx:id="userTable" VBox.vgrow="ALWAYS" styleClass="modern-table">
+            <columns>
+                <TableColumn fx:id="colId" text="ID" prefWidth="50"/>
+                <TableColumn fx:id="colUsername" text="Username" prefWidth="200"/>
+                <TableColumn fx:id="colRole" text="Role" prefWidth="150"/>
+                <TableColumn fx:id="colActions" text="Actions" prefWidth="150"/>
+            </columns>
+            <columnResizePolicy><TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/></columnResizePolicy>
+        </TableView>
+    </VBox>
+</VBox>

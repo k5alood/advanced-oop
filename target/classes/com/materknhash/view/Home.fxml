@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.*?>
+
+<VBox spacing="0" xmlns:fx="http://javafx.com/fxml">
+    <!-- HEADER -->
+    <HBox styleClass="header" alignment="CENTER_LEFT">
+        <Label text="Dashboard Overview" styleClass="page-title"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <HBox styleClass="user-profile" alignment="CENTER" spacing="10">
+            <Button text="🔔" style="-fx-background-color: transparent; -fx-font-size: 18px;"/>
+            <VBox alignment="CENTER_RIGHT">
+                <Label fx:id="userNameLabel" text="Admin" style="-fx-font-weight: bold;"/>
+                <Label text="Online" style="-fx-text-fill: #22c55e; -fx-font-size: 10px;"/>
+            </VBox>
+        </HBox>
+    </HBox>
+
+    <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent;">
+        <VBox spacing="25">
+            <padding><Insets top="20" right="40" bottom="40" left="40"/></padding>
+            
+            <HBox spacing="20">
+                <VBox HBox.hgrow="ALWAYS" styleClass="stat-card-blue">
+                    <Label text="Total Sales" style="-fx-text-fill: rgb(30, 58, 138);"/>
+                    <Label fx:id="totalSalesLabel" text="0.00 EGP" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+                    <Label text="+12% from last month ↗" style="-fx-text-fill: rgb(30, 58, 138); -fx-font-size: 11px;"/>
+                </VBox>
+                <VBox HBox.hgrow="ALWAYS" styleClass="stat-card-green">
+                    <Label text="Total Profit" style="-fx-text-fill: rgb(21, 128, 61);"/>
+                    <Label fx:id="totalProfitLabel" text="0.00 EGP" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+                    <Label text="+8% from last month ↗" style="-fx-text-fill: rgb(21, 128, 61); -fx-font-size: 11px;"/>
+                </VBox>
+                <VBox HBox.hgrow="ALWAYS" styleClass="stat-card-yellow">
+                    <Label text="Total Parts" style="-fx-text-fill: rgb(180, 83, 9);"/>
+                    <Label fx:id="totalPartsLabel" text="0" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+                    <Label text="All spare parts" style="-fx-text-fill: rgb(180, 83, 9); -fx-font-size: 11px;"/>
+                </VBox>
+                <VBox HBox.hgrow="ALWAYS" styleClass="stat-card-red">
+                    <Label text="Low Stock Alerts" style="-fx-text-fill: rgb(153, 27, 27);"/>
+                    <Label fx:id="lowStockLabel" text="0" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: rgb(220, 38, 38);"/>
+                    <Label text="Items low in stock" style="-fx-text-fill: rgb(153, 27, 27); -fx-font-size: 11px;"/>
+                </VBox>
+            </HBox>
+            
+            <HBox spacing="25">
+                <VBox HBox.hgrow="ALWAYS" prefHeight="450" styleClass="activity-card">
+                    <Label text="Sales Performance" style="-fx-font-weight: bold; -fx-font-size: 16px;"/>
+                    <LineChart fx:id="salesChart" legendSide="TOP" animated="false" style="-fx-padding: 20 0 0 0;">
+                        <xAxis><CategoryAxis side="BOTTOM" label="Month" /></xAxis>
+                        <yAxis><NumberAxis side="LEFT" label="Revenue" /></yAxis>
+                    </LineChart>
+                </VBox>
+                
+                <VBox prefWidth="350" styleClass="activity-card">
+                    <Label text="Live Feed" style="-fx-font-weight: bold; -fx-font-size: 16px;"/>
+                    <VBox fx:id="recentActivitiesList" spacing="10" VBox.vgrow="ALWAYS">
+                        <padding><Insets top="15"/></padding>
+                    </VBox>
+                </VBox>
+            </HBox>
+        </VBox>
+    </ScrollPane>
+</VBox>

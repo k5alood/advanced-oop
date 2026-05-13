@@ -47,7 +47,7 @@ public class DashboardController {
     private StackPane contentArea;
     @FXML
     private BorderPane mainBorderPane;
-    
+
     private javafx.scene.Node dashboardHomeView;
 
     @FXML
@@ -60,8 +60,10 @@ public class DashboardController {
 
     @FXML
     public void initialize() {
-        dashboardHomeView = contentArea.getChildren().get(0); // Save the initial dashboard view
         try {
+            // Load Dashboard Home by default
+            showDashboard();
+            
             if (SessionManager.getInstance().isLoggedIn()) {
                 User user = SessionManager.getInstance().getCurrentUser();
                 if (userNameLabel != null && user != null) {
@@ -177,34 +179,52 @@ public class DashboardController {
 
     @FXML
     private void showDashboard() {
-        contentArea.getChildren().setAll(dashboardHomeView);
+        loadView("/com/materknhash/view/Home.fxml");
         refreshDashboardData();
     }
 
     @FXML
-    private void showInventory() { loadView("/com/materknhash/view/Inventory.fxml"); }
+    private void showInventory() {
+        loadView("/com/materknhash/view/Inventory.fxml");
+    }
 
     @FXML
-    private void showSales() { loadView("/com/materknhash/view/Sales.fxml"); }
+    private void showSales() {
+        loadView("/com/materknhash/view/Sales.fxml");
+    }
 
     @FXML
-    private void showPurchases() { loadView("/com/materknhash/view/Inventory.fxml"); } // Placeholder
+    private void showPurchases() {
+        loadView("/com/materknhash/view/Inventory.fxml");
+    } // Placeholder
 
     @FXML
-    private void showSuppliers() { loadView("/com/materknhash/view/Supplier.fxml"); }
+    private void showSuppliers() {
+        loadView("/com/materknhash/view/Supplier.fxml");
+    }
 
     @FXML
-    private void showReports() { loadView("/com/materknhash/view/Reports.fxml"); }
+    private void showReports() {
+        loadView("/com/materknhash/view/Reports.fxml");
+    }
 
     @FXML
-    private void showUsers() { loadView("/com/materknhash/view/Dashboard.fxml"); } // Placeholder
+    private void showUsers() {
+        loadView("/com/materknhash/view/UserManagement.fxml");
+    }
 
     @FXML
-    private void showSettings() { loadView("/com/materknhash/view/Dashboard.fxml"); } // Placeholder
+    private void showSettings() {
+        loadView("/com/materknhash/view/Dashboard.fxml"); // Still a placeholder but will be fixed
+    }
 
     private void loadView(String fxmlPath) {
         try {
             javafx.fxml.FXMLLoader loader = new javafx.fxml.FXMLLoader(getClass().getResource(fxmlPath));
+            // If the FXML uses DashboardController, we want to use THIS instance
+            if (fxmlPath.contains("Home.fxml")) {
+                loader.setController(this);
+            }
             contentArea.getChildren().setAll((javafx.scene.Node) loader.load());
         } catch (Exception e) {
             e.printStackTrace();

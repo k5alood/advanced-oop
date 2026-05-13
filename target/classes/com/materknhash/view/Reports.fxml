@@ -1,77 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.chart.*?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.chart.*?>
 
-<VBox xmlns:fx="http://javafx.com/fxml" 
+<VBox spacing="0" xmlns:fx="http://javafx.com/fxml" 
       fx:controller="com.materknhash.controller.ReportController"
-      spacing="25" style="-fx-background-color: #f8fafc;"
-      stylesheets="@../css/style.css">
+      stylesheets="@../css/dashboard.css">
     
-    <padding>
-        <Insets top="30" right="40" bottom="30" left="40"/>
-    </padding>
-
-    <!-- Header & Filter -->
-    <HBox alignment="CENTER_LEFT" spacing="20">
-        <VBox>
-            <Text text="Reports &amp; Analytics" styleClass="page-title"/>
-            <Text text="Real-time business performance insights" styleClass="page-subtitle"/>
-        </VBox>
-        <Region HBox.hgrow="ALWAYS" />
-        <DatePicker fx:id="startDatePicker" promptText="Start Date"/>
-        <DatePicker fx:id="endDatePicker" promptText="End Date"/>
-        <Button text="Generate Report" styleClass="login-button" onAction="#generateReports"/>
+    <HBox styleClass="header" alignment="CENTER_LEFT">
+        <Label text="Financial Reports" styleClass="page-title"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="📥 Export PDF" styleClass="action-btn-primary"/>
     </HBox>
 
-    <!-- Chart Grid -->
-    <GridPane hgap="30" vgap="30" VBox.vgrow="ALWAYS">
-        <columnConstraints>
-            <ColumnConstraints percentWidth="50" />
-            <ColumnConstraints percentWidth="50" />
-        </columnConstraints>
-        
-        <!-- Pie Chart -->
-        <VBox styleClass="chart-container" GridPane.columnIndex="0">
-            <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
-            <Text text="Sales by Category" styleClass="chart-title"/>
-            <PieChart fx:id="categoryPieChart" legendSide="RIGHT" prefHeight="350"/>
-        </VBox>
-        
-        <!-- Bar Chart -->
-        <VBox styleClass="chart-container" GridPane.columnIndex="1">
-            <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
-            <Text text="Top Selling Products" styleClass="chart-title"/>
-            <BarChart fx:id="productsBarChart" prefHeight="350">
-                <xAxis><CategoryAxis label="Product Name" /></xAxis>
-                <yAxis><NumberAxis label="Quantity Sold" /></yAxis>
-            </BarChart>
-        </VBox>
-        
-        <!-- Summary Stats Card -->
-        <VBox styleClass="chart-container" GridPane.rowIndex="1" GridPane.columnSpan="2">
-            <padding><Insets top="25" right="25" bottom="25" left="25"/></padding>
-            <Text text="Financial Performance Summary" styleClass="chart-title"/>
-            <HBox spacing="50" alignment="CENTER" style="-fx-padding: 20 0;">
-                <VBox alignment="CENTER" spacing="5">
-                    <Text text="Total Revenue" styleClass="card-label"/>
-                    <Text fx:id="revenueText" text="$0.00" styleClass="card-value"/>
+    <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent;">
+        <VBox spacing="25">
+            <padding><Insets top="20" right="40" bottom="40" left="40"/></padding>
+            
+            <HBox spacing="20">
+                <VBox HBox.hgrow="ALWAYS" styleClass="activity-card">
+                    <Label text="Revenue Breakdown" style="-fx-font-weight: bold;"/>
+                    <PieChart fx:id="revenuePieChart" prefHeight="350"/>
                 </VBox>
-                <Separator orientation="VERTICAL" />
-                <VBox alignment="CENTER" spacing="5">
-                    <Text text="Estimated Profit" styleClass="card-label"/>
-                    <Text fx:id="profitText" text="$0.00" styleClass="card-value-profit"/>
-                </VBox>
-                <Separator orientation="VERTICAL" />
-                <VBox alignment="CENTER" spacing="5">
-                    <Text text="Net Growth" styleClass="card-label"/>
-                    <Text text="+15.2%" styleClass="card-trend-up"/>
+                <VBox HBox.hgrow="ALWAYS" styleClass="activity-card">
+                    <Label text="Monthly Growth" style="-fx-font-weight: bold;"/>
+                    <BarChart fx:id="growthBarChart">
+                        <xAxis><CategoryAxis side="BOTTOM"/></xAxis>
+                        <yAxis><NumberAxis side="LEFT"/></yAxis>
+                    </BarChart>
                 </VBox>
             </HBox>
+
+            <VBox styleClass="activity-card">
+                <Label text="Top Selling Spare Parts" style="-fx-font-weight: bold; -fx-padding: 0 0 10 0;"/>
+                <TableView fx:id="topProductsTable" prefHeight="250" styleClass="modern-table">
+                    <columns>
+                        <TableColumn text="Part Name" prefWidth="250"/>
+                        <TableColumn text="Category" prefWidth="150"/>
+                        <TableColumn text="Units Sold" prefWidth="100"/>
+                        <TableColumn text="Total Revenue" prefWidth="150"/>
+                    </columns>
+                </TableView>
+            </VBox>
         </VBox>
-    </GridPane>
-    
+    </ScrollPane>
 </VBox>
